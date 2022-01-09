@@ -16,11 +16,9 @@ $ git clone --recursive https://github.com/sifive/freedom-e-sdk.git
 ```
 - Download toolchain
 ```bash
-$ mkdir ~/toolchain
-$ cd ~/toolchain
-$ mkdir sifive_gcc
-wget -c https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.12/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14.tar.gz -O - | tar -xz -C sifive_gcc --strip-components 1
-export RISCV_PATH=~/toolchain/sifive_gcc
+$ mkdir -p toolchain/sifive_gcc
+$ wget -c https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.12/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14.tar.gz -O - | tar -xz -C toolchain/sifive_gcc --strip-components 1
+$ export RISCV_PATH=`pwd`/toolchain/sifive_gcc
 ```
 ## Hello world with renode
 - Build Hello world sample
@@ -113,4 +111,10 @@ $ make
 - Start Renode
 ```bash
 (monitor) s @sifive_fe310_freertos_gdb.resc
+```
+
+## Testing with Renode
+- Run Renode robot framework with `renode-test` command
+```
+$ renode-test SiFive-FE310.robot
 ```

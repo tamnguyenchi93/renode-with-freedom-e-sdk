@@ -1,2 +1,6 @@
 standalone-freertos-minimal
 freedom-e-sdk
+logs
+snapshots
+*.html
+*.xml
