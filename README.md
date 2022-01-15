@@ -10,6 +10,19 @@
     - https://github.com/sifive/freedom-tools/releases
 
 ## Setup
+- Install `build-essential`:
+```bash
+$ sudo apt-get update
+$ sudo apt-get install build-essential python3.8-venv
+```
+- Install renode:
+```bash
+$ sudo apt-get install policykit-1 libgtk2.0-0 screen uml-utilities gtk-sharp2 \
+    libc6-dev gcc python3 python3-pip mono-complete libzmq5
+$ wget https://github.com/renode/renode/releases/download/v1.12.0/renode_1.12.0_amd64.deb
+$ sudo dpkg -i renode_1.12.0_amd64.deb
+$ rm renode_1.12.0_amd64.deb
+```
 - Clone freedom-e-sdk
 ```bash
 $ git clone --recursive https://github.com/sifive/freedom-e-sdk.git
@@ -71,7 +84,7 @@ $ export PATH=$RISCV_PATH/bin:$PATH
 ```
 - Start cross debug
 ```bash
-renode-with-freedom-e-sdk/freedom-e-sdk$ riscv64-unknown-elf-gdb software/sifive-welcome/debug/sifive-welcome.elf
+$ riscv64-unknown-elf-gdb software/sifive-welcome/debug/sifive-welcome.elf
 GNU gdb (SiFive GDB-Metal 10.1.0-2020.12.7) 10.1
 Copyright (C) 2020 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -114,6 +127,10 @@ $ make
 ```
 
 ## Testing with Renode
+- Install renode's robot require
+```bash
+pip install -r /opt/renode/tests/requirements.txt
+```
 - Run Renode robot framework with `renode-test` command
 ```
 $ renode-test SiFive-FE310.robot
